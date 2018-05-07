@@ -1,0 +1,24 @@
+{
+  "name": "angkota-web",
+  "version": "1.0.0",
+  "description": "Dashboard untuk manajemen platform angkota",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kmdrn7/angkota-web.git"
+  },
+  "keywords": [
+    "Angkota",
+    "Angkutan",
+    "Kota"
+  ],
+  "author": "Andika Ahmad Ramadhan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kmdrn7/angkota-web/issues"
+  },
+  "homepage": "https://github.com/kmdrn7/angkota-web#readme"
+}
