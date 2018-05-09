@@ -2,6 +2,7 @@ import * as express from 'express'
 import * as MainRouter from './routes/router'
 import config from './config/main'
 import { json } from 'body-parser'
+import * as MustacheExpress from 'mustache-express'
 
 class Server {
 
@@ -15,8 +16,11 @@ class Server {
         this.bootstrap()
     }
 
-    config (): void{
+    config (): void {
         this.app.use(json())
+        this.app.engine('hbs', MustacheExpress())
+        this.app.set('view engine', 'hbs')
+        this.app.set('views', __dirname + '/views')
         this.app.use(this.router)
     }
 
@@ -24,7 +28,7 @@ class Server {
         this.router = MainRouter.router
     }
 
-    bootstrap (): void{
+    bootstrap (): void {
         this.app.listen(config.PORT, () => {
             console.log('Listening server on port ' + config.PORT + '...')
         })

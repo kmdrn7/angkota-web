@@ -13,7 +13,14 @@ class Router {
 
     routes (){
         this.router.get('/', (req, res) => {
-            res.send("Cobak ganti")
+            res.render('index', {
+                pengirim: "Andika Ahmad",
+                pesan: {
+                    header: "Tes",
+                    body: "Halo ini adalah pesan dari saya",
+                    foot: "hello"
+                }                
+            })
         })
         
         this.router.use('/dashboard', dashboardController)        
