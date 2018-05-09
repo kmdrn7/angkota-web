@@ -7,7 +7,7 @@
     "start": "tsc && node ./build/index.js",
     "build": "gulp",
     "tsc": "tsc",
-    "dev": "concurrently --kill-others \"tsc -w\" \"gulp watch\" \"nodemon --config nodemon.json ./build/index.js\"",
+    "dev": "concurrently --kill-others \"tsc -w\" \"gulp watch\" \"nodemon --config nodemon.json ./build/index.js\""
   },
   "repository": {
     "type": "git",
