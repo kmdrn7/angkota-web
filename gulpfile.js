@@ -19,30 +19,13 @@ gulp.task('assets', function() {
     gulp.src(JSON_FILES).pipe(gulp.dest('build'));
 });
 
-gulp.task('watch',  () => {
+gulp.task('watch', ['views', 'resources', 'assets'],  () => {
     return watch('src/**/*', () => {
         gulp.src(['src/views/**/*.*']).pipe(gulp.dest('build/views'));
         gulp.src(['src/resources/**/*.*']).pipe(gulp.dest('build/resources'));
         gulp.src(JSON_FILES).pipe(gulp.dest('build'));
     });
 })
-
-// gulp.task('develop', function () {
-//     var stream = nodemon({ 
-//         script: './build/index.js',
-//         ext: 'html hbs js css',
-//         ignore: ['build/'],
-//         tasks: ['assets', 'view', 'scripts', 'resources']
-//     });
-
-//     stream.on('restart', function () {
-//         console.log('restarted!')
-//     })
-//     .on('crash', function() {
-//         console.error('Application has crashed!\n')
-//         stream.emit('restart', 10)  // restart the server in 10 seconds
-//     });
-// });
 
 gulp.task('default', () => {
     console.log("Running none of gulp script")

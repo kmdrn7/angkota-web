@@ -1,5 +1,5 @@
-import Server from './server'
-import config from './config/main'
+import Server from './app/server'
+import config from './app/config/main'
 
 const port = process.env.port || config.PORT
 const server = new Server()

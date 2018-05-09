@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response } from 'express'
 
 class DashboardController {
 
@@ -23,4 +23,4 @@ class DashboardController {
 
 }
 
-export default new DashboardController().router;
+export default new DashboardController().router

@@ -1,6 +1,7 @@
 import * as express from 'express'
 
-import dashboardController from '../controllers/dashboard.controller';
+import dashboardController from '../controllers/dashboard.controller'
+import homeController from '../controllers/home.controller';
 
 class Router {
 
@@ -12,17 +13,7 @@ class Router {
     }
 
     routes (){
-        this.router.get('/', (req, res) => {
-            res.render('index', {
-                pengirim: "Andika Ahmad",
-                pesan: {
-                    header: "Tes",
-                    body: "Halo ini adalah pesan dari saya",
-                    foot: "hello"
-                }                
-            })
-        })
-        
+        this.router.use('/', homeController)
         this.router.use('/dashboard', dashboardController)        
     }
 }
