@@ -10,7 +10,7 @@ class Server {
     app: express.Application
     router: express.Router    
 
-    constructor (){
+    constructor () {
         this.app = express()
         this.routes()
         this.config()
@@ -22,7 +22,7 @@ class Server {
         this.app.use(urlencoded({ extended: false }))
         this.app.use(express.static(config.__dirname + '/public'))
         this.app.use(ExpressSession({
-            secret:  'i-love-typescript-dude',
+            secret:  'angkota-session-key',
             resave: false,
             saveUninitialized: true,
             cookie: {
