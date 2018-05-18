@@ -11,7 +11,7 @@ class HomeController {
 
     routes (){
         this.router.get('/', (req: Request, res: Response) => {            
-            res.render('index')
+            res.render('welcome')
         })
     }
 

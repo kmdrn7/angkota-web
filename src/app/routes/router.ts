@@ -1,7 +1,8 @@
 import * as express from 'express'
 
-import dashboardController from '../controllers/dashboard.controller'
+import dashboardController from '../controllers/dashboard.controller';
 import homeController from '../controllers/home.controller';
+import apiController from '../controllers/api.controller';
 
 class Router {
 
@@ -13,13 +14,12 @@ class Router {
     }
 
     routes (){
-        this.router.use('/', homeController)
-        
+        this.router.use('/', homeController)        
         this.router.get('/admin', (req: express.Request, res: express.Response) => {
             res.redirect('/dashboard')
         })
-
         this.router.use('/dashboard', dashboardController)
+        this.router.use('/api/v1', apiController)
     }
 }
 

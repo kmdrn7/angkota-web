@@ -2,8 +2,8 @@ import * as express from 'express'
 import * as MainRouter from './routes/router'
 import config from './config/main'
 import { json, urlencoded } from 'body-parser'
-import * as MustacheExpress from 'mustache-express'
 import * as ExpressSession from 'express-session'
+import * as logger from 'morgan'
 
 class Server {
 
@@ -18,6 +18,7 @@ class Server {
     }
 
     config (): void {
+        this.app.use(logger('dev'))
         this.app.use(json())
         this.app.use(urlencoded({ extended: false }))
         this.app.use(express.static(config.__dirname + '/public'))
@@ -28,9 +29,8 @@ class Server {
             cookie: {
                 maxAge: 60000
             }
-        }));
-        this.app.engine('hbs', MustacheExpress())
-        this.app.set('view engine', 'hbs')
+        }));        
+        this.app.set('view engine', 'ejs');
         this.app.set('views', config.__dirname + '/resources/views')
         this.app.use(this.router)
     }

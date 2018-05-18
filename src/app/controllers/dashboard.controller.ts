@@ -12,11 +12,13 @@ class DashboardController {
     routes (){
         
         this.router.get('/', (req: Request, res: Response) => {
-            res.send("Berhasil")
-        })
-
-        this.router.get('/:name', (req: Request, res: Response) => {
-            console.log(req.params.name)            
+            res.render('index', {                
+                page: {
+                    title: 'Dashboard',
+                    actor: 'Jasa Raharja',
+                    view: 'jasaraharja/dashboard'
+                }
+            })
         })
 
     }
