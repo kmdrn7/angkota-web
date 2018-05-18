@@ -1,19 +1,26 @@
 import * as express from 'express'
 import * as MainRouter from './routes/router'
+import {Socket as Socket} from './socket/init'
 import config from './config/main'
 import { json, urlencoded } from 'body-parser'
 import * as ExpressSession from 'express-session'
 import * as logger from 'morgan'
+import { createServer, Server } from 'http';
+import * as socketIo from 'socket.io';
 
-class Server {
+
+class AppServer {
 
     app: express.Application
-    router: express.Router    
+    router: express.Router
+    server: Server
+    io: socketIo.Server
 
     constructor () {
         this.app = express()
         this.routes()
         this.config()
+        this.socket()
         this.bootstrap()
     }
 
@@ -39,6 +46,12 @@ class Server {
         this.router = MainRouter.router
     }
 
+    socket (): void {
+        this.server = this.app.listen(3001)
+        this.io = socketIo(this.server)
+        new Socket(this.io)
+    }
+
     bootstrap (): void {
         this.app.listen(config.PORT, () => {
             console.log('Listening server on port ' + config.PORT + '...')
@@ -47,4 +60,4 @@ class Server {
 
 }
 
-export default Server
+export default AppServer

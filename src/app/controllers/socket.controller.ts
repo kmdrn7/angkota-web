@@ -1,10 +1,9 @@
 import { Router, Request, Response } from 'express'
-import {AdminPublicMessage as Admin} from '../socket/adminSocket'
 
-class DashboardController {
+class SocketController {
 
     router: Router
-
+    
     constructor (){
         this.router = Router()        
         this.routes()
@@ -13,7 +12,7 @@ class DashboardController {
     routes (){
         
         this.router.get('/', (req: Request, res: Response) => {
-            res.render('index', {                
+            res.render('socket', {                
                 page: {
                     title: 'Dashboard',
                     actor: 'Jasa Raharja',
@@ -21,14 +20,9 @@ class DashboardController {
                 }
             })
         })
-        
-        this.router.get('/test', (req: Request, res: Response) => {
-            res.json({"test":"yoi"})
-            Admin.ioNameSpace.emit('messages', 'Ada Kecelakaan');
-        })
 
     }
 
 }
 
-export default new DashboardController().router
+export default new SocketController().router

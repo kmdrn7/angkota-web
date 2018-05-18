@@ -3,6 +3,7 @@ import * as express from 'express'
 import dashboardController from '../controllers/dashboard.controller';
 import homeController from '../controllers/home.controller';
 import apiController from '../controllers/api.controller';
+import socketController from '../controllers/socket.controller';
 
 class Router {
 
@@ -19,6 +20,7 @@ class Router {
             res.redirect('/dashboard')
         })
         this.router.use('/dashboard', dashboardController)
+        this.router.use('/socket', socketController)
         this.router.use('/api/v1', apiController)
     }
 }
