@@ -13,13 +13,17 @@ class DashboardController {
     routes (){
         
         this.router.get('/', (req: Request, res: Response) => {
-            res.render('index', {                
-                page: {
-                    title: 'Dashboard',
-                    actor: 'Jasa Raharja',
-                    view: 'jasaraharja/dashboard'
-                }
-            })
+            if(!req.session.email){
+                res.redirect('auth/login');
+            }else{
+                res.render('index', {                
+                    page: {
+                        title: 'Dashboard',
+                        actor: 'Jasa Raharja',
+                        view: 'jasaraharja/dashboard'
+                    }
+                })
+            }
         })
         
         this.router.get('/test', (req: Request, res: Response) => {
