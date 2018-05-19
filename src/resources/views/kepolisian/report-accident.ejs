@@ -125,11 +125,14 @@
     <script src="/libs/back/js/front.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
     <script>  
-        // var socket = io.connect('http://localhost:7361/kepolisianSocket');
-        var socket = io.connect('http://128.199.171.196:7361/kepolisianSocket');
+        var socket = io.connect('http://localhost:7361/kepolisianSocket');
         socket.on('connect', function(data) {
             socket.emit('join', 'Hello World from client');
         });
+
+        function playSound(filename){   
+            document.getElementById("sound").innerHTML='<audio autoplay="autoplay"><source src="' + filename + '.mp3" type="audio/mpeg" /><source src="' + filename + '.ogg" type="audio/ogg" /><embed hidden="true" autostart="true" loop="false" src="' + filename +'.mp3" /></audio>';
+        }
 
         socket.on('appendReport', function(html) {
             $("#tableBody").prepend(html)
