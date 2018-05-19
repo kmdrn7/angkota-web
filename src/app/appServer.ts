@@ -54,7 +54,7 @@ class AppServer {
         this.app.use(cors)
         this.server = this.app.listen(7361,'0.0.0.0')
         this.io = socketIo(this.server)
-        this.io.origins('https://jasaraharja.gravicodev.com')
+        this.io.origins('*:*')
 
         new Socket(this.io)
     }
