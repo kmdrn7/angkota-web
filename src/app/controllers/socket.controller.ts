@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express'
 import {fcmMessage as fcmMessage} from '../interfaces/fcmMessage'
 import {NotificationController as Notif} from '../controllers/notification.controller'
+import {KepolisianSocket as KepolisianSocket} from '../socket/kepolisianSocket'
 
 class SocketController {
 
@@ -38,6 +39,12 @@ class SocketController {
                     view: 'jasaraharja/dashboard'
                 }
             })
+        })
+
+        this.router.get('/addKepolisianAccident', (req: Request, res: Response) => {
+            let html = req.param("html")
+            KepolisianSocket.ioNameSpace.emit("appendReport",html)
+            res.json({"tes":"tes"})
         })
 
     }

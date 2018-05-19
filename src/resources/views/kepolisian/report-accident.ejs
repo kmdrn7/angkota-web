@@ -71,14 +71,16 @@
                             <table class="table table-striped table-outter-bordered">
                                 <thead>
                                     <tr>
-                                        <td>No.</td>
-                                        <td></td>
+                                        <td>Type</td>
+                                        <td>License Number</td>
+                                        <td>Date</td>
+                                        <td>From</td>
+                                        <td>Accident Location</td>
+                                        <td>Detail</td>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Andika Ahmad Ramadhan</td>
-                                    </tr>
+                                <tbody id="tableBody">
+                                        <tbody id="tableBody"><tr> <td>Jetbus 45</td> <td>W 777 HQ</td> <td>2018-05-12</td> <td>Surabaya</td> <td>Krian</td> <td>Telah terjadi kecelakaan antara jetbus dan sepeda motor</td> </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -93,7 +95,7 @@
         <!-- End Page wrapper  -->
     </div>
     <!-- End Wrapper -->
-
+    <audio id="siren" src="/music/siren.mp3" preload="auto"></audio>
     <script>
         $(document).ready(function(){
             console.log("berhasil");
@@ -121,6 +123,18 @@
     <script src="/libs/back/js/bootstrap-datetimepicker.js"></script>     
     <!-- scripit init-->    
     <script src="/libs/back/js/front.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script>  
+        var socket = io.connect('http://localhost:7361/kepolisianSocket');
+        socket.on('connect', function(data) {
+            socket.emit('join', 'Hello World from client');
+        });
+
+        socket.on('appendReport', function(html) {
+            $("#tableBody").prepend(html)
+            document.getElementById('siren').play();
+        });
+    </script>
 
 </body>
 </html>%

@@ -82,33 +82,13 @@ class DashboardController {
             if(!req.session.user){
                 res.redirect('/auth/login');
             }else{
-                
-                admin.database().ref('report-accidents').once('value', (snap) => {                    
-                    return snap
-                }).then((ress) => {     
-                    let itemArr = [];
-                    ress.forEach(function(childSnapshot,id,arr){
-                        // itemArr.push(childSnapshot.val())
-                        admin.database().ref('/tickets').child(childSnapshot.key).once('value', (ticket) => {                    
-                            return ticket
-                        }).then((ticket) => {
-                            let tmp = childSnapshot.val()
-                            tmp.detailTicket = ticket.val()
-                            itemArr.push(tmp)
-                            console.log(arr)
-                            // console.log(itemArr)
-                            res.render('kepolisian/report-accident', {
-                                page: {
-                                    title: 'Dashboard',
-                                    actor: req.session.user.type,
-                                    view: req.session.user.view + '/dashboard',
-                                }
-                            })
-                        })
-                    });
+                res.render('kepolisian/report-accident', {
+                    page: {
+                        title: 'Dashboard',
+                        actor: req.session.user.type,
+                        view: req.session.user.view + '/dashboard',
+                    }
                 })
-
-
             }
         })
 
