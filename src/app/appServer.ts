@@ -8,6 +8,7 @@ import * as logger from 'morgan'
 import { createServer, Server } from 'http';
 import * as socketIo from 'socket.io';
 import * as firebase from 'firebase-admin'
+import * as cors from 'cors'
 
 class AppServer {
 
@@ -27,6 +28,7 @@ class AppServer {
     }
 
     config (): void {        
+        this.app.use(cors())
         this.app.use(logger('dev'))
         this.app.use(bodyParser.urlencoded({ extended: false }))
         this.app.use(bodyParser.json())
