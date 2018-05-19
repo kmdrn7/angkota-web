@@ -5,25 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Admin panel untuk aplikasi eventpaskibra">
-    <meta name="author" content="Andika Ahmad Ramadhan">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="Admin panel untuk aplikasi angkota">
+    <meta name="author" content="Andika Ahmad Ramadhan">    
     <meta name="robots" content="all,follow">
-    <link rel="icon" type="image/png" sizes="64x64" href="libs/img/favicon.png">
-    <title><%= page.title %> | <%= page.actor %> | Admin Angkota</title>
+    <!--<link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon.png">-->
+    <title><%= page.title %> -- Kepolisian Admin Panel || Angkota</title>
     <!-- Core CSS -->
-    <link rel="stylesheet" href="/libs/back/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/libs/back/css/bootstrap.min.css"/>    
     <link rel="stylesheet" href="/libs/back/css/datatables.min.css"/>
     <link rel="stylesheet" href="/libs/back/css/dropify.css">
     <link rel="stylesheet" href="/libs/back/css/skins/flat/green.css">
     <link rel="stylesheet" href="/libs/back/css/select2.min.css">
-    <link rel="stylesheet" href="/libs/back/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="/libs/back/css/bootstrap-datetimepicker.min.css">    
     <!-- Custom CSS -->    
     <link rel="stylesheet" href="/libs/back/css/helper.css"/>
-    <link rel="stylesheet" href="/libs/back/css/style.css?v='.rand(0,99)) }}"/>
+    <link rel="stylesheet" href="/libs/back/css/style.css"/>
     <!-- Load Jquery First -->
-    <script src="/libs/back/js/jquery.min.js"></script>
-    {{-- <link rel="stylesheet" href="/libs/back/css/eventpaskibra.css?v='.rand(0,99)) }}"> --}}
+    <script src="/libs/back/js/jquery.min.js"></script>    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->    
     <!--[if lt IE 9]>
@@ -32,7 +30,7 @@
     <![endif]-->    
     <!-- Script untuk inisialisasi variabel dan kolom -->
     <script>
-        var idh = page.view;
+        var idh = '';
         var id_table;
         var DT;
         var columns = [];
@@ -41,36 +39,20 @@
 </head>
 
 <body class="fix-header fix-sidebar">
-
     <!-- Masukkan navbar -->
-    <%= page.title %>
+    <% include ../partials/navbar %>
     <!-- Main wrapper  -->
     <div id="main-wrapper">
         <!-- Masukkan sidebar -->
-        <%= page.actor %>
+        <% include sidebar %>
+        <!-- Masukkan isi kontent halaman -->
+        <% include dashboard %>
         <!-- Masukkan footer -->        
-        <%= page.view %>
+        <% include ../partials/footer %>
         </div>
         <!-- End Page wrapper  -->
     </div>
     <!-- End Wrapper -->
-
-    <!-- Modal Loading -->
-    <div class="modal" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog modal-md modal-tengah" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="loadingModalTitle">Loading</h4>
-                </div>
-                <div class="modal-body text-center" id="modalLoadingText">
-                    <i class="fa fa-spinner fa-spin"></i>&nbsp; Sedang memproses permintaan anda ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-close" aria-hidden="true"></i>&nbsp; Batal</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- All Javascript files -->
     <script src="/libs/back/js/jquery.cookie.js"></script>
@@ -92,7 +74,6 @@
     <script src="/libs/back/js/ckeditor.js"></script>
     <script src="/libs/back/js/bootstrap-datetimepicker.js"></script>     
     <!-- scripit init-->    
-    <script src="/libs/back/js/front.js'"></script>
-    <script src="/libs/back/js/eventpaskibra.js?v=<%= 12 %>"></script>
+    <script src="/libs/back/js/front.js"></script>    
 </body>
-</html>
+</html>%
