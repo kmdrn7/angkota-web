@@ -49,7 +49,7 @@ class AppServer {
     }
 
     socket (): void {
-        this.server = this.app.listen(7361)
+        this.server = this.app.listen(7361,'0.0.0.0')
         this.io = socketIo(this.server)
         new Socket(this.io)
     }
