@@ -203,8 +203,9 @@ h6 {
   display: none;
 }
 .page-wrapper {
-  background: #fafafa;
+  background: #f9f9f9;
   padding-bottom: 60px;
+  padding-top: 70px;
 }
 .container-fluid {
   padding: 0 30px 25px;
@@ -4657,6 +4658,9 @@ footer p {
 .stat-widget-eight .header-title {
   font-size: 20px;
   font-weight: 300;
+}
+.header-title i {
+  font-size: 14px;
 }
 .stat-widget-eight .ti-more-alt {
   color: #878787;
