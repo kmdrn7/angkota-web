@@ -25,9 +25,8 @@ class SocketController {
         })
 
         this.router.get('/test', (req: Request, res: Response) => {
-            this.pesan.title = "Jancok KOntol"
-            this.pesan.body = "taek eek asu"
-            this.pesan.icon = "uc_icon"
+            this.pesan.title = "tes"
+            this.pesan.body = "tes"
             this.pesan.json = ""
 
             new Notif().sendMessage(this.pesan,"asdasd")

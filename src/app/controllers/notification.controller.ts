@@ -1,6 +1,5 @@
 import { Router, Request, Response } from 'express'
 import * as firebase from 'firebase-admin'
-import * as gcm from 'node-gcm'
 import {fcmMessage as fcmMessage} from '../interfaces/fcmMessage'
 
 export class NotificationController {
