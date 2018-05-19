@@ -1,7 +1,7 @@
 import * as express from 'express'
 import * as MainRouter from './routes/router'
 import config from './config/main'
-import { json, urlencoded } from 'body-parser'
+import * as bodyParser from 'body-parser'
 import * as ExpressSession from 'express-session'
 import * as logger from 'morgan'
 
@@ -17,10 +17,10 @@ class Server {
         this.bootstrap()
     }
 
-    config (): void {
+    config (): void {        
         this.app.use(logger('dev'))
-        this.app.use(json())
-        this.app.use(urlencoded({ extended: false }))
+        this.app.use(bodyParser.urlencoded({ extended: false }))
+        this.app.use(bodyParser.json())
         this.app.use(express.static(config.__dirname + '/public'))
         this.app.use(ExpressSession({
             secret:  'angkota-session-key',
