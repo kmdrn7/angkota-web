@@ -31,6 +31,16 @@ class DashboardController {
             Admin.ioNameSpace.emit('messages', 'Ada Kecelakaan');
         })
 
+        this.router.get('/test', (req: Request, res: Response) => {
+            res.render('index', {                
+                page: {
+                    title: 'Dashboard',
+                    actor: 'Jasa Raharja',
+                    view: 'jasaraharja/dashboard'
+                }
+            })
+        })
+
     }
 
 }
