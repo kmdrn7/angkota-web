@@ -7,7 +7,7 @@ import * as ExpressSession from 'express-session'
 import * as logger from 'morgan'
 import { createServer, Server } from 'http';
 import * as socketIo from 'socket.io';
-
+import * as firebase from 'firebase-admin'
 
 class AppServer {
 
@@ -15,12 +15,14 @@ class AppServer {
     router: express.Router
     server: Server
     io: socketIo.Server
+    serviceAccount: any
 
     constructor () {
         this.app = express()
+        this.firebase()
         this.routes()
         this.config()
-        this.socket()
+        this.socket()        
         this.bootstrap()
     }
 
@@ -55,6 +57,14 @@ class AppServer {
     bootstrap (): void {
         this.app.listen(config.PORT, () => {
             console.log('Listening server on port ' + config.PORT + '...')
+        })
+    }
+
+    firebase (): void {
+        this.serviceAccount = require('../../ServiceAccountKey.json')
+        firebase.initializeApp({
+            credential: firebase.credential.cert(this.serviceAccount),
+            databaseURL: 'https://angkota-cc8ac.firebaseio.com'
         })
     }
 

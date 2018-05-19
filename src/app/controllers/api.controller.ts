@@ -6,19 +6,13 @@ import * as bodyParser from 'body-parser'
 class ApiController {
 
     ref: any
-    router: Router
-    serviceAccount: any
+    router: Router    
 
     constructor (){
         this.router = Router()
         this.router.use(bodyParser.json())
         this.router.use(bodyParser.urlencoded({ extended: false }))
-        this.routes()
-        this.serviceAccount = require('../../../ServiceAccountKey.json')
-        firebase.initializeApp({
-            credential: firebase.credential.cert(this.serviceAccount),
-            databaseURL: 'https://angkota-hackathon-2018.firebaseio.com'
-        })
+        this.routes()        
     }
 
     routes (){
