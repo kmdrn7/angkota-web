@@ -70,8 +70,8 @@ class AppServer {
     }
 
     socket (): void {
-        this.app.use(cors)
-        this.server = this.app.listen(7361,'0.0.0.0')
+        this.app.use(cors())
+        this.server = this.app.listen(7361)
         this.io = socketIo(this.server)
         this.io.origins('*:*')
 
