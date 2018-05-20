@@ -25,20 +25,14 @@ class SocketController {
             })
         })
 
-        this.router.get('/test', (req: Request, res: Response) => {
-            this.pesan.title = "tes"
-            this.pesan.body = "tes"
+        this.router.get('/sendNotif', (req: Request, res: Response) => {
+            this.pesan.title = "PERHATIAN !!!!!"
+            this.pesan.body = "Terdapat kecelakaan di sekitar anda"
             this.pesan.json = ""
 
-            new Notif().sendMessage(this.pesan,"asdasd")
+            new Notif().sendMessage(this.pesan,req.param("token"))
 
-            res.render('socket', {                
-                page: {
-                    title: 'Dashboard',
-                    actor: 'Jasa Raharja',
-                    view: 'jasaraharja/dashboard'
-                }
-            })
+            res.json({"iya":"iya"})
         })
 
         this.router.get('/addKepolisianAccident', (req: Request, res: Response) => {
