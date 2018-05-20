@@ -31,6 +31,8 @@ class SocketController {
             this.pesan.json = ""
 
             new Notif().sendMessage(this.pesan,req.param("token"))
+            
+            console.log(req.param("token"))
 
             res.json({"iya":"iya"})
         })
