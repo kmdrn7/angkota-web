@@ -18,10 +18,7 @@
     </div>    
     <div class="container-fluid">             
         <div class="row">
-            <div class="col-sm-12">
-                <h3><i class="fa fa-angle-right"></i>&nbsp; Informasi <b>Event</b></h3>
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card p-30">
                     <div class="media">
                         <div class="media-left meida media-middle">
@@ -29,38 +26,27 @@
                         </div>
                         <div class="media-body media-text-right">
                             <h2>12</h2>
-                            <p class="m-b-0">Event Aktif</p>
+                            <p class="m-b-0">Santunan Diberikan</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card p-30">
-                    <div class="media">
-                        <div class="media-left meida media-middle">
-                            <span><i class="fa fa-star-half f-s-50 color-warning"></i></span>
-                        </div>
-                        <div class="media-body media-text-right">
-                            <h2>25</h2>
-                            <p class="m-b-0">Event Tertunda</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card p-30">
-                    <div class="media">
-                        <div class="media-left meida media-middle">
-                            <span><i class="fa fa-star-o f-s-50 color-success"></i></span>
-                        </div>
-                        <div class="media-body media-text-right">
-                            <h2>5</h2>
-                            <p class="m-b-0">Event Selesai</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div>            
         </div>
     </div>    
 </div>
 <!-- End Page wrapper  -->
+<script>
+function initMap() {
+    var uluru = {lat: -7.2793795, lng: 112.7926759};
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: uluru
+    });
+    var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+    });
+}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-XjofybTWwQTy9HYa8zx-Hh9No6BaQSI
+&callback=initMap"></script>

@@ -14,15 +14,7 @@ class DashboardController {
 
     routes (){
         
-        this.router.get('/', (req: Request, res: Response) => {
-            
-            req.session.user = {
-                type: 'Kepolisian',
-                email: 'aspendaka@gmail.com',
-                actor: 'kepolisian',
-                view: 'kepolisian'
-            }
-
+        this.router.get('/', (req: Request, res: Response) => {            
             if (!req.session.user){
                 res.redirect('/auth/login');
             } else {
@@ -56,6 +48,34 @@ class DashboardController {
             }
         })
 
+        this.router.get('/jasaraharja/trip-report', (req: Request, res: Response) => {
+            if(!req.session.user){
+                res.redirect('/auth/login');
+            }else{
+                res.render('jasaraharja/trip-report', {
+                    page: {
+                        title: 'Dashboard',
+                        actor: req.session.user.type,
+                        view: req.session.user.view + '/dashboard',
+                    }
+                })
+            }
+        })
+
+        this.router.get('/jasaraharja/watch-trip', (req: Request, res: Response) => {
+            if(!req.session.user){
+                res.redirect('/auth/login');
+            }else{
+                res.render('jasaraharja/watch-trip', {
+                    page: {
+                        title: 'Dashboard',
+                        actor: req.session.user.type,
+                        view: req.session.user.view + '/dashboard',
+                    }
+                })
+            }
+        })
+
         this.router.get('/kepolisian', (req: Request, res: Response) => {
             if(!req.session.user){
                 res.redirect('/auth/login');
@@ -71,43 +91,33 @@ class DashboardController {
         })
 
         this.router.get('/kepolisian/report-accident', (req: Request, res: Response) => {
-
-            req.session.user = {
-                type: 'Kepolisian',
-                email: 'aspendaka@gmail.com',
-                actor: 'report-accident',
-                view: 'report-accident'
-            }
-
             if(!req.session.user){
                 res.redirect('/auth/login');
             }else{
                 
-                admin.database().ref('report-accidents').once('value', (snap) => {                    
-                    return snap
-                }).then((ress) => {     
-                    let itemArr = [];
-                    ress.forEach(function(childSnapshot,id,arr){
-                        // itemArr.push(childSnapshot.val())
-                        admin.database().ref('/tickets').child(childSnapshot.key).once('value', (ticket) => {                    
-                            return ticket
-                        }).then((ticket) => {
-                            let tmp = childSnapshot.val()
-                            tmp.detailTicket = ticket.val()
-                            itemArr.push(tmp)
-                            console.log(arr)
-                            // console.log(itemArr)
-                            res.render('kepolisian/report-accident', {
-                                page: {
-                                    title: 'Dashboard',
-                                    actor: req.session.user.type,
-                                    view: req.session.user.view + '/dashboard',
-                                }
-                            })
-                        })
-                    });
+                res.render('kepolisian/report-accident', {
+                    page: {
+                        title: 'Dashboard',
+                        actor: req.session.user.type,
+                        view: req.session.user.view + '/dashboard',
+                    }
                 })
 
+            }
+        })
+
+        this.router.get('/kepolisian/accident-information', (req: Request, res: Response) => {
+            if(!req.session.user){
+                res.redirect('/auth/login');
+            }else{
+                
+                res.render('kepolisian/accident-information', {
+                    page: {
+                        title: 'Dashboard',
+                        actor: req.session.user.type,
+                        view: req.session.user.view + '/dashboard',
+                    }
+                })
 
             }
         })
@@ -116,7 +126,35 @@ class DashboardController {
             if(!req.session.user){
                 res.redirect('/auth/login');
             }else{
-                res.render('index', {
+                res.render('kesehatan/index', {
+                    page: {
+                        title: 'Dashboard',
+                        actor: req.session.user.type,
+                        view: req.session.user.view + '/dashboard',
+                    }
+                })
+            }
+        })
+
+        this.router.get('/kesehatan/search-patient', (req: Request, res: Response) => {
+            if(!req.session.user){
+                res.redirect('/auth/login');
+            }else{
+                res.render('kesehatan/search-patient', {
+                    page: {
+                        title: 'Dashboard',
+                        actor: req.session.user.type,
+                        view: req.session.user.view + '/dashboard',
+                    }
+                })
+            }
+        })
+
+        this.router.get('/kesehatan/report-patient', (req: Request, res: Response) => {
+            if(!req.session.user){
+                res.redirect('/auth/login');
+            }else{
+                res.render('kesehatan/report-patient', {
                     page: {
                         title: 'Dashboard',
                         actor: req.session.user.type,

@@ -9,7 +9,7 @@
     <meta name="author" content="Andika Ahmad Ramadhan">    
     <meta name="robots" content="all,follow">
     <!--<link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon.png">-->
-    <title>Report Accident -- Kepolisian Admin Panel || Angkota</title>
+    <title><%= page.title %> -- Jasa Raharja Admin Panel || Angkota</title>
     <!-- Core CSS -->
     <link rel="stylesheet" href="/libs/back/css/bootstrap.min.css"/>    
     <link rel="stylesheet" href="/libs/back/css/datatables.min.css"/>
@@ -51,11 +51,11 @@
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-primary">
-                        <b>Report Accident</b>&nbsp;
+                        <b>Trip Report</b>&nbsp;
                         <small><i class="fa fa-level-down"></i></small>
                     </h3>
                     <p style="margin-bottom: 0px" class="header-title">
-                        <i>Informasi laporan Kecelakaan yang sedang terjadi</i>
+                        <i>Informasi seputar perjalanan angkutan umum di seluruh indonesia</i>
                     </p>
                 </div>
                 <div class="col-md-7 align-self-center">
@@ -65,7 +65,7 @@
                 </div>
             </div>    
             <div class="container-fluid">             
-                <div class="row">                    
+                <div class="row">
                     <div class="col-md-12">
                         <div class="card p-30">
                             <table class="table table-striped table-outter-bordered">
@@ -171,23 +171,17 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>                            
-                </div>               
+                    </div>   
+                </div>
             </div>    
         </div>
-        <!-- End Page wrapper  -->
+        <!-- End Page wrapper  -->        
         <!-- Masukkan footer -->        
         <% include ../partials/footer %>
         </div>
         <!-- End Page wrapper  -->
     </div>
     <!-- End Wrapper -->
-
-    <script>
-        $(document).ready(function(){
-            console.log("berhasil");
-        })
-    </script>
 
     <!-- All Javascript files -->
     <script src="/libs/back/js/jquery.cookie.js"></script>
@@ -209,7 +203,6 @@
     <script src="/libs/back/js/ckeditor.js"></script>
     <script src="/libs/back/js/bootstrap-datetimepicker.js"></script>     
     <!-- scripit init-->    
-    <script src="/libs/back/js/front.js"></script>
-
+    <script src="/libs/back/js/front.js"></script>    
 </body>
-</html>%
+</html>

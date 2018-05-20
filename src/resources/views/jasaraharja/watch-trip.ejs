@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Admin panel untuk aplikasi angkota">
+    <meta name="author" content="Andika Ahmad Ramadhan">    
+    <meta name="robots" content="all,follow">
+    <!--<link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon.png">-->
+    <title><%= page.title %> -- Jasa Raharja Admin Panel || Angkota</title>
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/libs/back/css/bootstrap.min.css"/>    
+    <link rel="stylesheet" href="/libs/back/css/datatables.min.css"/>
+    <link rel="stylesheet" href="/libs/back/css/dropify.css">
+    <link rel="stylesheet" href="/libs/back/css/skins/flat/green.css">
+    <link rel="stylesheet" href="/libs/back/css/select2.min.css">
+    <link rel="stylesheet" href="/libs/back/css/bootstrap-datetimepicker.min.css">    
+    <!-- Custom CSS -->    
+    <link rel="stylesheet" href="/libs/back/css/helper.css"/>
+    <link rel="stylesheet" href="/libs/back/css/style.css"/>
+    <!-- Load Jquery First -->
+    <script src="/libs/back/js/jquery.min.js"></script>    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->    
+    <!--[if lt IE 9]>
+        <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->    
+    <!-- Script untuk inisialisasi variabel dan kolom -->
+    <script>
+        var idh = '';
+        var id_table;
+        var DT;
+        var columns = [];
+        var AjaxData = {};
+    </script>
+</head>
+
+<body class="fix-header fix-sidebar">
+    <!-- Masukkan navbar -->
+    <% include ../partials/navbar %>
+    <!-- Main wrapper  -->
+    <div id="main-wrapper">
+        <!-- Masukkan sidebar -->
+        <% include sidebar %>
+        <!-- Masukkan isi kontent halaman -->
+        <!-- Page wrapper  -->
+        <div class="page-wrapper">    
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-primary">
+                        <b>Trip Report</b>&nbsp;
+                        <small><i class="fa fa-level-down"></i></small>
+                    </h3>
+                    <p style="margin-bottom: 0px" class="header-title">
+                        <i>Informasi seputar perjalanan angkutan umum di seluruh indonesia</i>
+                    </p>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">                    
+                        <li class="breadcrumb-item active"><b>Dashboard</b></li>
+                    </ol>
+                </div>
+            </div>    
+            <div class="container-fluid">             
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3><i class="fa fa-angle-right"></i>&nbsp; Pemantau <b>Angkutan Umum</b></h3>
+                        <br>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="map" style="width:100%;height:400px"></div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+        <!-- End Page wrapper  -->
+        <script>
+        function initMap() {
+            var uluru = {lat: -7.2793795, lng: 112.7926759};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 14,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-XjofybTWwQTy9HYa8zx-Hh9No6BaQSI
+        &callback=initMap"></script>
+        <!-- Masukkan footer -->        
+        <% include ../partials/footer %>
+        </div>
+        <!-- End Page wrapper  -->
+    </div>
+    <!-- End Wrapper -->
+
+    <!-- All Javascript files -->
+    <script src="/libs/back/js/jquery.cookie.js"></script>
+    <script src="/libs/back/js/popper.min.js"></script>
+    <script src="/libs/back/js/icheck.min.js"></script>
+    <script src="/libs/back/js/sweetalert.js"></script>
+    <script src="/libs/back/js/jquery.slimscroll.js"></script>
+    <script src="/libs/back/js/bootstrap.min.js"></script>
+    <script src="/libs/back/js/sidebarmenu.js"></script>
+    <script src="/libs/back/js/sticky-kit.min.js"></script>
+    <script src="/libs/back/js/custom.min.js"></script>
+    <script src="/libs/back/js/scripts.js"></script>    
+    <script src="/libs/back/js/Chart.min.js"></script>
+    <script src="/libs/back/js/jquery.validate.min.js"></script>    
+    <script src="/libs/back/js/datatables.min.js"></script>
+    <script src="/libs/back/js/dropify.js"></script>
+    <script src="/libs/back/js/select2.js"></script>
+    <script src="/libs/back/js/moment.js"></script>
+    <script src="/libs/back/js/ckeditor.js"></script>
+    <script src="/libs/back/js/bootstrap-datetimepicker.js"></script>     
+    <!-- scripit init-->    
+    <script src="/libs/back/js/front.js"></script>    
+</body>
+</html>

@@ -5406,7 +5406,7 @@ tbody tr td {
   color: #99abb4;
 }
 tbody tr td:last-child {
-  text-align: right;
+  /* text-align: right; */
 }
 .table > tbody > tr > td,
 .table > tbody > tr > th,
