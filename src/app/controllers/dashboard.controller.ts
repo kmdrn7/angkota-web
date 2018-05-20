@@ -118,7 +118,6 @@ class DashboardController {
                         view: req.session.user.view + '/dashboard',
                     }
                 })
-
             }
         })
 
